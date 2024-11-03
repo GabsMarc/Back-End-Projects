@@ -6,7 +6,7 @@ export class GetClientController {
 
     async handle(request: Request, response: Response){
 
-        const getClientServices = new GetClientService
+        const getClientService = new GetClientService
         
 
     }
