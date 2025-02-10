@@ -1,5 +1,6 @@
 {
   "singleQuote": true,
   "allowInterfaces": true,
-  "semi": false
+  "semi": false,
+  "bracketSpacing": true
 }
