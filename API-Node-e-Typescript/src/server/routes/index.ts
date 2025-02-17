@@ -1,14 +1,18 @@
-import { Request, Response, Router } from 'express'
+import { NextFunction, Request, Response, Router } from 'express'
 import { StatusCodes } from 'http-status-codes'
+import { CidadesController } from './../controllers'
 
 const router = Router()
 
 router.get('/', (req: Request, res: Response) => {
-  res.send('Olá, Dev!')
+  res.send('Olá Dev!')
 })
 
-router.get('/teste', (req: Request, res: Response) => {
-  res.status(StatusCodes.OK).json(req.query.teste)
-})
+
+router.post('/cidades', CidadesController.createBodyValidator, CidadesController.create)
+
+
+
+
 
 export { router }
