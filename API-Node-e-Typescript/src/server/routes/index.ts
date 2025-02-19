@@ -1,5 +1,4 @@
-import { NextFunction, Request, Response, Router } from 'express'
-import { StatusCodes } from 'http-status-codes'
+import { Request, Response, Router } from 'express'
 import { CidadesController } from './../controllers'
 
 const router = Router()
@@ -9,7 +8,7 @@ router.get('/', (req: Request, res: Response) => {
 })
 
 
-router.post('/cidades', CidadesController.createBodyValidator, CidadesController.create)
+router.post('/cidades', CidadesController.createValidation, CidadesController.create)
 
 
 
