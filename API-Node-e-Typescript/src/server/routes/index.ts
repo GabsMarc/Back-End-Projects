@@ -8,8 +8,11 @@ router.get('/', (req: Request, res: Response) => {
 })
 
 
+router.get('/cidades', CidadesController.GetAllValidation, CidadesController.getAll)
+router.get('/cidades/:id', CidadesController.GetByIdValidation, CidadesController.getById)
 router.post('/cidades', CidadesController.createValidation, CidadesController.create)
-
+router.put('/cidades/:id', CidadesController.updateByIdValidation, CidadesController.updateById)
+router.delete('/cidades/:id', CidadesController.deleteByIdValidation, CidadesController.deleteById)
 
 
 

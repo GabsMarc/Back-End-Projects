@@ -1,12 +1,12 @@
 import { RequestHandler } from "express"
 import { StatusCodes } from "http-status-codes"
-import { ValidationError, InferType } from "yup"
+import { ValidationError, ObjectSchema } from "yup"
 
 
 
 type TProperty = 'body' | 'header' | 'params' | 'query'
 
-type TAllSchemas = Record<TProperty, InferType<any>>
+type TAllSchemas = Record<TProperty, ObjectSchema<any>>
 
 type TValidation = (schemas: Partial<TAllSchemas>) => RequestHandler
 

@@ -5,9 +5,9 @@ import { StatusCodes } from "http-status-codes";
 
 
 
-export const createValidation = validation({
-    body: yup.object().shape({
-        nome: yup.string().required().min(3)
+export const deleteByIdValidation = validation({
+    params: yup.object().shape({
+        id: yup.number().integer().required().moreThan(0)
     })
 });
 
@@ -15,7 +15,7 @@ export const createValidation = validation({
 
 
 
-export async function create(req: Request, res: Response) {
+export async function deleteById(req: Request, res: Response) {
 
 
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado!')
