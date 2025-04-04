@@ -20,6 +20,16 @@ export async function create(req: Request, res: Response) {
 
     const result = await CidadesProvider.create(req.body)
 
-    res.status(StatusCodes.CREATED).json(1)
+    if (result instanceof Error){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            errors: {
+                default: result.message
+            }
+        })
+    }
+
+
+
+    res.status(StatusCodes.CREATED).json(result)
 
 }

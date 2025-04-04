@@ -1,7 +1,8 @@
-import { json, Request, Response } from "express"
+import { Request, Response } from "express"
 import * as yup from 'yup'
 import { validation } from "../../shared/middleware"
 import { StatusCodes } from "http-status-codes";
+import { CidadesProvider } from "../../database/providers/cidades";
 
 
 
@@ -21,6 +22,26 @@ export const updateByIdValidation = validation({
 export async function updateById(req: Request, res: Response) {
 
 
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(req.params)
+    if (!req.params.id) {
+        res.status(StatusCodes.BAD_REQUEST).json({
+            errors: {
+                default: 'O parâmetro "id" precisa ser informado.'
+            }
+        })
+    }
+
+
+    const result = await CidadesProvider.UpdateById(parseInt(req.params.id), req.body)
+
+    if (result instanceof Error){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            errors: {
+                default: result.message
+            }
+        })
+    }
+
+
+    res.status(StatusCodes.NO_CONTENT).json(result)
 
 }
