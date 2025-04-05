@@ -28,6 +28,8 @@ export async function getAll(req: Request, res: Response) {
                 default: result.message
             }
         })
+
+        return
     }
 
 
