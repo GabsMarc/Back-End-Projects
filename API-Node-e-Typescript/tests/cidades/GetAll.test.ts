@@ -6,8 +6,8 @@ describe('Cidades -- GetAll', () => {
 
     it('Solicitar todos os registros da tabela cidade', async () => {
 
-        const test1 = await testeServer.
-        get('/cidades')
+        const test1 = await testeServer
+        .get('/cidades')
 
         expect(test1.statusCode).toEqual(StatusCodes.OK)
     })

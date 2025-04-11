@@ -10,7 +10,7 @@ export const updateByIdValidation = validation({
         id: yup.number().integer().required().moreThan(0)
     }),
     body: yup.object().shape({
-        name: yup.string().required().min(3)
+        nome: yup.string().required().min(3)
     })
 })
 
@@ -29,6 +29,8 @@ export const updateById = async (req: Request, res: Response) => {
         return
     }
 
-    res.status(StatusCodes.OK)
+    res.status(StatusCodes.OK).json({
+        status: 'Atualizado com sucesso.'
+    })
 
 }

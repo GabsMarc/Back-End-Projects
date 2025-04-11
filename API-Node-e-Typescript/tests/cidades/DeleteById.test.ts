@@ -7,7 +7,7 @@ describe('Cidades - DeleteByID', () => {
     it('Apagar registro que não existe', async () => {
 
         const res1 = await testeServer
-        .delete('/cidades/99')
+        .delete('/cidades/1000')
         .send()
 
         expect(res1.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR)
