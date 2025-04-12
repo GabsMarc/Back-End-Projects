@@ -6,7 +6,9 @@ describe('Cidades -- GetById', () => {
 
     it('Solicitar cidade por ID', async () => {
 
-        const test1 = await testeServer.get('/cidades')
+        const test1 = await testeServer
+            .get('/cidades')
+            .set('Authorization', `Bearer teste.teste.teste`)
 
         expect(test1.status).toEqual(StatusCodes.OK)
     })

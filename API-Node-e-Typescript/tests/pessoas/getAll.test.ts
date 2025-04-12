@@ -8,6 +8,7 @@ describe('Pessoas -- GetAll', () => {
 
         const test1 = await testeServer
             .get('/pessoas')
+            .set('Authorization', `Bearer teste.teste.teste`)
 
         expect(test1.status).toEqual(StatusCodes.OK)    
 

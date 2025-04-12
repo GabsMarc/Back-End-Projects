@@ -10,6 +10,7 @@ describe('Cidades - Create', () => {
 
         const res1 = await testeServer
             .post('/cidades')
+            .set('Authorization', `Bearer teste.teste.teste`)
             .send({ nome: 'Caxias do Sul' })
 
 
@@ -21,6 +22,7 @@ describe('Cidades - Create', () => {
 
         const res1 = await testeServer
             .post('/cidades')
+            .set('Authorization', `Bearer teste.teste.teste`)
             .send({ nome: 'Ca' })
 
 

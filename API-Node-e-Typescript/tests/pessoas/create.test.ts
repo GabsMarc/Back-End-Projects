@@ -9,6 +9,7 @@ describe('Pessoas - Create', () => {
 
         const test1 = await testeServer
             .post('/pessoas')
+            .set('Authorization', `Bearer teste.teste.teste`)
             .send({
                 nome: "Lais",
                 sobrenome: "Zerbo",
