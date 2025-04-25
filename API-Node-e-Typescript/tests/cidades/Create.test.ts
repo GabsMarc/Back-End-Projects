@@ -5,12 +5,20 @@ import { testeServer } from './../jest.setup';
 
 describe('Cidades - Create', () => {
 
+    let accessToken = ''
+    beforeAll(async () => {
+
+        await testeServer.post('/cadastrar').send({ nome: 'Teste', email: 'teste@email.com', senha: '123456' })
+        const signInRes = await testeServer.post('/entrar').send({ email: 'teste@email.com', senha: '123456' })
+
+        accessToken = signInRes.body.accessToken
+    })
 
     it('Cria Registro', async () => {
 
         const res1 = await testeServer
             .post('/cidades')
-            .set('Authorization', `Bearer teste.teste.teste`)
+            .set('Authorization', `Bearer ${accessToken}`)
             .send({ nome: 'Caxias do Sul' })
 
 
@@ -22,7 +30,7 @@ describe('Cidades - Create', () => {
 
         const res1 = await testeServer
             .post('/cidades')
-            .set('Authorization', `Bearer teste.teste.teste`)
+            .set('Authorization', `Bearer ${accessToken}`)
             .send({ nome: 'Ca' })
 
 
